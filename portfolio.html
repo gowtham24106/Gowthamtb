@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gowtham TB - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(120deg, #0f0f0f 60%, #7c3aed 100%);
+            background-size: 400% 400%;
+            animation: miracleBg 18s ease infinite;
+            color: #fff;
+        }
+        @keyframes miracleBg {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        /* Glitch effect for headings */
+        .glitch {
+            position: relative;
+            color: #ff0057;
+            font-family: 'Orbitron', Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+            animation: glitch 1.2s infinite alternate-reverse;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; overflow: hidden;
+        }
+        .glitch::before {
+            color: #fff;
+            z-index: 1;
+            left: 2px; text-shadow: -2px 0 #ff0057;
+            animation: glitchTop 1.2s infinite alternate-reverse;
+        }
+        .glitch::after {
+            color: #7c3aed;
+            z-index: 2;
+            left: -2px; text-shadow: 2px 0 #ffd700;
+            animation: glitchBottom 1.2s infinite alternate-reverse;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 #ff0057, -2px 0 #fff; }
+            20% { text-shadow: -2px 2px #fff, 2px -2px #ff0057; }
+            40% { text-shadow: 2px 2px #ff0057, -2px -2px #fff; }
+            60% { text-shadow: 0 0 18px #ff0057, 0 0 40px #fff; }
+            80% { text-shadow: 2px -2px #fff, -2px 2px #ff0057; }
+            100% { text-shadow: -2px 0 #ff0057, 2px 0 #fff; }
+        }
+        @keyframes glitchTop {
+            0% { clip-path: inset(0 0 80% 0); }
+            100% { clip-path: inset(0 0 0 0); }
+        }
+        @keyframes glitchBottom {
+            0% { clip-path: inset(80% 0 0 0); }
+            100% { clip-path: inset(0 0 0 0); }
+        }
+        /* Flickering border for project cards */
+        section#projects .bg-white {
+            border: 3px solid #ff0057;
+            box-shadow: 0 0 24px #ff0057, 0 0 24px #ffd700 inset;
+            animation: flickerBorder 1.5s infinite alternate;
+            transition: box-shadow 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes flickerBorder {
+            0% { border-color: #ff0057; box-shadow: 0 0 24px #ff0057, 0 0 24px #ffd700 inset;}
+            50% { border-color: #ffd700; box-shadow: 0 0 48px #ffd700, 0 0 32px #ff0057;}
+            100% { border-color: #ff0057; box-shadow: 0 0 24px #ff0057, 0 0 24px #ffd700 inset;}
+        }
+        /* Avatar badass effect */
+        section #about .rounded-full {
+            box-shadow: 0 0 32px #ff0057, 0 0 16px #ffd700;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        section #about .rounded-full:hover {
+            box-shadow: 0 0 64px #ff0057, 0 0 32px #ffd700;
+            transform: scale(1.08) rotate(-8deg);
+            filter: brightness(1.2) contrast(1.2);
+        }
+        /* Floating skull icon */
+        .floating-skull {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 60px;
+            height: 60px;
+            background: url('https://img.icons8.com/ios-filled/100/ff0057/skull.png') center/contain no-repeat;
+            opacity: 0.7;
+            z-index: 999;
+            animation: skullFloat 2.5s infinite alternate;
+            filter: drop-shadow(0 0 16px #ff0057);
+        }
+        @keyframes skullFloat {
+            0% { transform: translateY(0);}
+            100% { transform: translateY(-18px);}
+        }
+        /* Contact button pulse */
+        section#contact a {
+            box-shadow: 0 0 16px #ff0057, 0 0 8px #ffd700;
+            border: 2px solid #ff0057;
+            animation: pulseBtn 1.5s infinite alternate;
+        }
+        @keyframes pulseBtn {
+            0% { box-shadow: 0 0 16px #ff0057, 0 0 8px #ffd700;}
+            100% { box-shadow: 0 0 32px #ffd700, 0 0 24px #ff0057;}
+        }
+        /* Footer badass effect */
+        footer {
+            background: linear-gradient(90deg, #ff0057 60%, #ffd700 100%);
+            color: #222 !important;
+            font-weight: bold;
+            box-shadow: 0 0 24px #ff0057;
+            border-top: 2px solid #ffd700;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <div class="floating-skull"></div>
+    <!-- Header/Navigation -->
+    <header class="bg-gray-900 text-white shadow-lg">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-wider text-white glitch" data-text="Gowtham TB">Gowtham TB</a>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+                <a href="#projects" class="hover:text-purple-400 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-purple-400 transition-colors">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 text-white transition-transform transform -translate-y-full">
+            <a href="#about" class="block py-2 px-4 hover:bg-gray-700 transition-colors">About</a>
+            <a href="#projects" class="block py-2 px-4 hover:bg-gray-700 transition-colors">Projects</a>
+            <a href="#contact" class="block py-2 px-4 hover:bg-gray-700 transition-colors">Contact</a>
+        </div>
+    </header>
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-16 text-center">
+            <div class="p-8 md:p-12 lg:p-16 bg-gradient-to-r from-purple-800 to-purple-600 rounded-lg shadow-xl text-white">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight glitch" data-text="Hello, I'm Gowtham TB">Hello, I'm Gowtham TB</h1>
+                <p class="text-lg md:text-xl font-light">PROGRAMMER | GAMER | GAME DEVELOPER</p>
+            </div>
+        </section>
+        <!-- About Me Section -->
+        <section id="about" class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-8">
+            <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shadow-xl transform transition-transform hover:scale-105">
+                <img src="TB.jpg" alt="Gowtham TB" class="w-full h-full object-cover">
+            </div>
+            <div class="text-center md:text-left md:flex-1">
+                <h2 class="text-3xl font-bold mb-4 text-gradient glitch" data-text="About Me">About Me</h2>
+                <p class="text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto md:mx-0">
+                    I am Gowtham ,I am a gamer, programmer, and game developer. I enjoys the entire process of creating games, from writing the code to playing the final product.
+                </p>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section id="projects" class="container mx-auto px-4 py-16 text-center">
+            <h2 class="text-3xl font-bold mb-8 text-gradient glitch" data-text="My Projects">My Projects</h2>
+            <div class="flex justify-center">
+                <!-- Project Card -->
+                <div class="bg-white p-6 rounded-lg shadow-xl transition-transform hover:scale-105 w-full md:w-1/2 lg:w-1/3">
+                    <h3 class="text-2xl font-semibold mb-2 text-gray-900">Badass Game Store</h3>
+                    <p class="text-gray-600 mb-4">Is a game store, Where the player buy trending games.</p>
+                    <a href="og.html" class="inline-block px-6 py-2 rounded-full font-semibold text-white bg-purple-600 hover:bg-purple-700 transition-colors">View Project</a>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="container mx-auto px-4 py-16 text-center">
+            <h2 class="text-3xl font-bold mb-4 text-gradient glitch" data-text="Contact Me">Contact Me</h2>
+            <p class="text-lg text-gray-200 mb-8">Feel free to get in touch for collaborations or opportunities.</p>
+            <a href="mailto:mgowthamtb@gmail.com" class="inline-block px-8 py-3 rounded-full font-semibold text-white bg-purple-600 hover:bg-purple-700 transition-colors transform hover:scale-105 shadow-lg">
+                Send an Email
+            </a>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4 mt-8">
+        <p class="text-sm">© 2025 Gowtham TB | Portfolio Website</p>
+    </footer>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('transform');
+            mobileMenu.classList.toggle('-translate-y-full');
+        });
+    </script>
+</body>
+</html>
